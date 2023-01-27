@@ -1,5 +1,4 @@
-﻿int number;
-string userNumberInString;
+﻿string userNumberInString;
 int zero=0,jeden=0, dwa=0, trzy=0, cztery = 0, piec = 0, szesc = 0, siedem = 0, osiem = 0, dziewiec = 0;
 
 Console.WriteLine("Podaj liczbę do policzenia: ");
