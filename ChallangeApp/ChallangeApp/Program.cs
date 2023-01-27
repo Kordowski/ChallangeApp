@@ -1,5 +1,5 @@
 ﻿string userNumberInString;
-int zero=0,jeden=0, dwa=0, trzy=0, cztery = 0, piec = 0, szesc = 0, siedem = 0, osiem = 0, dziewiec = 0;
+int counter0=0,counter1=0, counter2=0, counter3 = 0, counter4 = 0, counter5 = 0, counter6 = 0, counter7 = 0, counter8 = 0, counter9 = 0;
 
 Console.WriteLine("Podaj liczbę do policzenia: ");
 userNumberInString = Console.ReadLine();
@@ -12,37 +12,37 @@ void DigitCounter (string NumberInString)
     {
         Console.WriteLine(letter);
         if(letter == '0')
-        { zero++; }
+        { counter0++; }
         else if (letter == '1')
-        { jeden++; }
+        { counter1++; }
         else if (letter == '2')
-        { dwa++; }
+        { counter2++; }
         else if (letter == '3')
-        { trzy++; }
+        { counter3++; }
         else if (letter == '4')
-        { cztery++; }
+        { counter4++; }
         else if (letter == '5')
-        { piec++; }
+        { counter5++; }
         else if (letter == '6')
-        { szesc++; }
+        { counter6++; }
         else if (letter == '7')
-        { siedem++; }
+        { counter7++; }
         else if (letter == '8')
-        { osiem++; }
+        { counter8++; }
         else
-        { dziewiec++; }
+        { counter9++; }
     }
     Console.WriteLine("Liczba po przeliczeniu ma następującą ilość cyfr:");
-    Console.WriteLine("0 ==> " + zero + "razy");
-    Console.WriteLine("1 ==> " + jeden + "razy");
-    Console.WriteLine("2 ==> " + dwa + "razy");
-    Console.WriteLine("3 ==> " + trzy + "razy");
-    Console.WriteLine("4 ==> " + cztery + "razy");
-    Console.WriteLine("5 ==> " + piec + "razy");
-    Console.WriteLine("6 ==> " + szesc + "razy");
-    Console.WriteLine("7 ==> " + siedem + "razy");
-    Console.WriteLine("8 ==> " + osiem + "razy");
-    Console.WriteLine("9 ==> " + dziewiec + "razy");
+    Console.WriteLine("0 ==> " + counter0 + "razy");
+    Console.WriteLine("1 ==> " + counter1 + "razy");
+    Console.WriteLine("2 ==> " + counter2 + "razy");
+    Console.WriteLine("3 ==> " + counter3 + "razy");
+    Console.WriteLine("4 ==> " + counter4 + "razy");
+    Console.WriteLine("5 ==> " + counter5 + "razy");
+    Console.WriteLine("6 ==> " + counter6 + "razy");
+    Console.WriteLine("7 ==> " + counter7 + "razy");
+    Console.WriteLine("8 ==> " + counter8 + "razy");
+    Console.WriteLine("9 ==> " + counter9 + "razy");
     
 
 }
