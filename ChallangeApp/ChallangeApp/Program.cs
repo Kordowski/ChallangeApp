@@ -1,56 +1,27 @@
-﻿string userNumberInString;
-int counter0=0,counter1=0, counter2=0, counter3 = 0, counter4 = 0, counter5 = 0, counter6 = 0, counter7 = 0, counter8 = 0, counter9 = 0;
+﻿using ChallangeApp;
 
-Console.WriteLine("Podaj liczbę do policzenia: ");
-userNumberInString = Console.ReadLine();
-DigitCounter(userNumberInString);
+Employee employee1 = new Employee("Rafał", "Kordowski", 24);
+Employee employee2 = new Employee("Weronika", "Adamiak", 30);
+Employee employee3 = new Employee("Agata", "Falęcka", 40);
 
-void DigitCounter (string NumberInString)
+
+employee1.AddGrade();
+employee2.AddGrade();
+employee3.AddGrade();
+
+int maxResult = -1;
+Employee employeeWithMaxResult = null;
+List<Employee> employees = new List<Employee>()
+        {
+            employee1,employee2,employee3
+        };
+
+foreach (var employee in employees)
 {
-    char[] letters = NumberInString.ToArray();
-    foreach (char letter in letters)
+    if (employee.Result > maxResult)
     {
-        Console.WriteLine(letter);
-        if(letter == '0')
-        { counter0++; }
-        else if (letter == '1')
-        { counter1++; }
-        else if (letter == '2')
-        { counter2++; }
-        else if (letter == '3')
-        { counter3++; }
-        else if (letter == '4')
-        { counter4++; }
-        else if (letter == '5')
-        { counter5++; }
-        else if (letter == '6')
-        { counter6++; }
-        else if (letter == '7')
-        { counter7++; }
-        else if (letter == '8')
-        { counter8++; }
-        else
-        { counter9++; }
+        maxResult = employee.Result;
+        employeeWithMaxResult = employee;
     }
-    Console.WriteLine("Liczba po przeliczeniu ma następującą ilość cyfr:");
-    Console.WriteLine("0 ==> " + counter0 + "razy");
-    Console.WriteLine("1 ==> " + counter1 + "razy");
-    Console.WriteLine("2 ==> " + counter2 + "razy");
-    Console.WriteLine("3 ==> " + counter3 + "razy");
-    Console.WriteLine("4 ==> " + counter4 + "razy");
-    Console.WriteLine("5 ==> " + counter5 + "razy");
-    Console.WriteLine("6 ==> " + counter6 + "razy");
-    Console.WriteLine("7 ==> " + counter7 + "razy");
-    Console.WriteLine("8 ==> " + counter8 + "razy");
-    Console.WriteLine("9 ==> " + counter9 + "razy");
-    
-
 }
-
-
-
-
-
-
-
-
+Console.WriteLine("Pracownikiem z największą ilością punktów jest "+employeeWithMaxResult.FirstName + " "+ employeeWithMaxResult.LastName + " z łączną ilością: "+ maxResult+ " punktów");
