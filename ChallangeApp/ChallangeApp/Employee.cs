@@ -1,12 +1,9 @@
-﻿
-using System.Reflection.Metadata;
-
-namespace ChallangeApp
+﻿namespace ChallangeApp
 {
     public class Employee
     {
         int grade = 0;
-        new List<int> Grades = new List<int>();
+        List<int> grades = new List<int>();
         public string FirstName { get; private set; }
         public string LastName { get; private set; }
         public int Age { get; private set; } = 0;
@@ -21,7 +18,7 @@ namespace ChallangeApp
                     grade = Convert.ToInt32(Console.ReadLine());
                     if (grade > 0 && grade < 11)
                     {
-                        this.Grades.Add(grade);
+                        this.grades.Add(grade);
                     }
                     else
                     {
@@ -37,11 +34,9 @@ namespace ChallangeApp
         {
             get
             {
-                return this.Grades.Sum();
+                return this.grades.Sum();
             }
         }
-
-       
 
         public Employee(string firstName, string lastName, int age)
         {
