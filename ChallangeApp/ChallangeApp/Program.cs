@@ -5,9 +5,10 @@ Employee employee2 = new("Weronika", "Adamiak", 30);
 Employee employee3 = new("Agata", "Falęcka", 40);
 
 
-employee1.AddGrade();
-employee2.AddGrade();
-employee3.AddGrade();
+employee1.AddGrade(4);
+employee1.AddGrade(5);
+employee1.AddNegativeGrade(-9);
+employee1.AddNegativeGrade(-1);
 
 int maxResult = -1;
 Employee employeeWithMaxResult = null;

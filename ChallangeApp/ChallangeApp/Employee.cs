@@ -3,38 +3,31 @@
     public class Employee
     {
         int grade = 0;
-        List<int> grades = new List<int>();
+        List<int> grades = new();
+        List<int> negativeGrades = new();
         public string FirstName { get; private set; }
         public string LastName { get; private set; }
         public int Age { get; private set; } = 0;
         public int Score { get; private set; } = 0;
 
-        public void AddGrade()
+        public void AddGrade(int grade)
         {
-            for (int i = 0; i < 5; i++)
-            {
-                {
-                    Console.WriteLine("Dodaj " + (i + 1) + " ocenę dla pracownika " + FirstName + " " + LastName);
-                    grade = Convert.ToInt32(Console.ReadLine());
-                    if (grade > 0 && grade < 11)
-                    {
-                        this.grades.Add(grade);
-                    }
-                    else
-                    {
-                        Console.WriteLine("Wprowadź ocenę z zakresu od 1 do 10!");
-                        i--;
-                    }
-                }
-            }
-            Console.Clear();
+            
+          this.grades.Add(grade);
+                
         }
+
+        public void AddNegativeGrade(int negativeGrade)
+        {
+            this.negativeGrades.Add(negativeGrade);
+        }
+
 
         public int Result
         {
             get
             {
-                return this.grades.Sum();
+                return (grades.Sum() + negativeGrades.Sum());
             }
         }
 
