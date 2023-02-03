@@ -1,8 +1,7 @@
-using System.Reflection.Metadata;
-
 namespace ChallangeApp.Tests
 {
-    public class Tests
+    public class EmployeeTests
+
     {
         [SetUp]
         public void Setup()
@@ -19,34 +18,26 @@ namespace ChallangeApp.Tests
             employee.AddGrade(4);
             employee.AddNegativeGrade(-9);
 
-
-
             //act
             var result = employee.Result;
-
 
             //assert
 
             Assert.AreEqual(0,result);
-
-           
+ 
         }
 
         [Test]
-        public void WhenEmployeeCollect2NegativeGrades()
+        public void WhenEmployeeCollectTwoNegativeGrades()
         {
             // arrange
 
             var employee = new Employee("Rafal", "Kordowski", 24);
-            employee.AddGrade(-4);
-            employee.AddGrade(-5);
-            
-
-
+            employee.AddNegativeGrade(-4);
+            employee.AddNegativeGrade(-5);         
 
             //act
             var result = employee.Result;
-
 
             //assert
 

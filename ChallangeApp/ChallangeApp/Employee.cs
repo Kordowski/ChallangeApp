@@ -37,5 +37,10 @@
             this.LastName = lastName;
             this.Age = age;
         }
+        public Employee(string firstName)
+        {
+            this.FirstName = firstName;
+           
+        }
     }
 }
