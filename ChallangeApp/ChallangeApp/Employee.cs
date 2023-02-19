@@ -2,45 +2,45 @@
 {
     public class Employee
     {
-        int grade = 0;
-        List<int> grades = new();
-        List<int> negativeGrades = new();
-        public string FirstName { get; private set; }
-        public string LastName { get; private set; }
-        public int Age { get; private set; } = 0;
-        public int Score { get; private set; } = 0;
-
-        public void AddGrade(int grade)
+        private List<float> grades = new List<float>();
+        public Employee(string name, string surname)
         {
-            
-          this.grades.Add(grade);
-                
+            this.Name = name;
+            this.Surname = surname;
         }
 
-        public void AddNegativeGrade(int negativeGrade)
-        {
-            this.negativeGrades.Add(negativeGrade);
-        }
+        public string Name { get; private set; }
+        public string Surname { get; private set; }
 
-
-        public int Result
+        public void AddGrade(float grade)
         {
-            get
+            if(grade>0 && grade<100)
             {
-                return (grades.Sum() + negativeGrades.Sum());
+                this.grades.Add(grade);
+            }
+            else
+            {
+                Console.WriteLine("Podaj ocenę z zakresu 0 - 100");
+
             }
         }
 
-        public Employee(string firstName, string lastName, int age)
+        public Statistics GetStatistics()
         {
-            this.FirstName = firstName;
-            this.LastName = lastName;
-            this.Age = age;
-        }
-        public Employee(string firstName)
-        {
-            this.FirstName = firstName;
-           
+            var statistics = new Statistics();
+            statistics.Average= 0;
+            statistics.Max= float.MinValue;
+            statistics.Min= float.MaxValue;
+            foreach(var grade in this.grades)
+            {
+                statistics.Max = Math.Max(statistics.Max, grade);
+                statistics.Min = Math.Min(statistics.Min, grade);
+                statistics.Average += grade;
+            }
+
+            statistics.Average /= this.grades.Count;
+
+            return statistics;
         }
     }
 }

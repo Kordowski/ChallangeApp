@@ -9,41 +9,47 @@ namespace ChallangeApp.Tests
         }
 
         [Test]
-        public void WhenEmployeeCollectNegativeAndPositiveGrades()
+        public void StatisticsMinimumValueTest()
         {
-            // arrange
 
-            var employee = new Employee("Rafal","Kordowski",24);
+            var employee = new Employee("Rafal", "Kordowski");
             employee.AddGrade(5);
             employee.AddGrade(4);
-            employee.AddNegativeGrade(-9);
 
-            //act
-            var result = employee.Result;
+            var statistics = employee.GetStatistics();
 
-            //assert
+            Assert.AreEqual(statistics.Min, 4);
 
-            Assert.AreEqual(0,result);
- 
         }
+        [Test]
+        public void StatisticsMaximumValueTest()
+        {
+            var employee = new Employee("Rafal", "Kordowski");
+            employee.AddGrade(5);
+            employee.AddGrade(4);
+            employee.AddGrade(6);
+
+            var statistics = employee.GetStatistics();
+
+            Assert.AreEqual(statistics.Max, 6);
+
+        }
+
+
 
         [Test]
-        public void WhenEmployeeCollectTwoNegativeGrades()
+        public void StatisticsAverageValueTest()
         {
-            // arrange
+            var employee = new Employee("Rafal", "Kordowski");
+            employee.AddGrade(5);
+            employee.AddGrade(4);
+            employee.AddGrade(6);
 
-            var employee = new Employee("Rafal", "Kordowski", 24);
-            employee.AddNegativeGrade(-4);
-            employee.AddNegativeGrade(-5);         
+            var statistics = employee.GetStatistics();
 
-            //act
-            var result = employee.Result;
-
-            //assert
-
-            Assert.AreEqual(-9, result);
-
+            Assert.AreEqual(statistics.Average, 5);
 
         }
+
     }
 }
