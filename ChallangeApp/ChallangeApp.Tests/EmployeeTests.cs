@@ -9,47 +9,39 @@ namespace ChallangeApp.Tests
         }
 
         [Test]
-        public void StatisticsMinimumValueTest()
+        public void AddGradeShouldReturnAGrade()
         {
 
             var employee = new Employee("Rafal", "Kordowski");
-            employee.AddGrade(5);
-            employee.AddGrade(4);
+
+            employee.AddGrade("A");
+            employee.AddGrade("a");
+            employee.AddGrade("b");
+            employee.AddGrade(100);
 
             var statistics = employee.GetStatistics();
 
-            Assert.AreEqual(4, statistics.Min);
+            Assert.AreEqual("A", statistics.AverageLetter);
 
         }
         [Test]
-        public void StatisticsMaximumValueTest()
+        public void AddGradeShouldReturnBGrade()
         {
+
             var employee = new Employee("Rafal", "Kordowski");
-            employee.AddGrade(5);
-            employee.AddGrade(4);
-            employee.AddGrade(6);
+
+            employee.AddGrade('b');
+            employee.AddGrade("B");
+            employee.AddGrade("b");
+            employee.AddGrade(60);
 
             var statistics = employee.GetStatistics();
 
-            Assert.AreEqual(6, statistics.Max);
+            Assert.AreEqual("B", statistics.AverageLetter);
 
         }
 
-
-
-        [Test]
-        public void StatisticsAverageValueTest()
-        {
-            var employee = new Employee("Rafal", "Kordowski");
-            employee.AddGrade(5);
-            employee.AddGrade(4);
-            employee.AddGrade(6);
-
-            var statistics = employee.GetStatistics();
-
-            Assert.AreEqual(5, statistics.Average);
-
-        }
 
     }
 }
+
