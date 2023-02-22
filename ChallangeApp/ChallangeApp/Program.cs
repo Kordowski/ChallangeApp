@@ -3,20 +3,17 @@
 var employee = new Employee("Rafal", "Kordowski");
 
 employee.AddGrade(5);
-employee.AddGrade(611);
-employee.AddGrade("Rafal");
-employee.AddGrade("5");
-employee.AddGrade(5); 
-employee.AddGrade(9999999999999999999999.888888888888888888888888888888888888888888888888888888888);
-employee.AddGrade('6');
-employee.AddGrade('B');
+employee.AddGrade(2);
+employee.AddGrade(3);
 
 
 var statistics = employee.GetStatistics();
-
-Console.WriteLine($"Max: {statistics.Max}");
-Console.WriteLine($"Min: {statistics.Min}");
-Console.WriteLine($"Average {statistics.Average:N2}");
+var statistics1 = employee.GetStatisticsWithFor();
+var statistics2 = employee.GetStatisticsWithWhile();
+var statistics3 = employee.GetStatisticsWithDoWhile();
+Console.WriteLine($"Max: {statistics3.Max}");
+Console.WriteLine($"Min: {statistics3.Min}");
+Console.WriteLine($"Average {statistics3.Average:N2}");
 
 
 
