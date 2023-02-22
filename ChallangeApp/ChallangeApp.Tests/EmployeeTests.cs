@@ -18,7 +18,7 @@ namespace ChallangeApp.Tests
 
             var statistics = employee.GetStatistics();
 
-            Assert.AreEqual(statistics.Min, 4);
+            Assert.AreEqual(4, statistics.Min);
 
         }
         [Test]
@@ -31,7 +31,7 @@ namespace ChallangeApp.Tests
 
             var statistics = employee.GetStatistics();
 
-            Assert.AreEqual(statistics.Max, 6);
+            Assert.AreEqual(6, statistics.Max);
 
         }
 
@@ -47,7 +47,7 @@ namespace ChallangeApp.Tests
 
             var statistics = employee.GetStatistics();
 
-            Assert.AreEqual(statistics.Average, 5);
+            Assert.AreEqual(5, statistics.Average);
 
         }
 

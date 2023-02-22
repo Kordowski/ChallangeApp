@@ -14,16 +14,53 @@
 
         public void AddGrade(float grade)
         {
-            if(grade>0 && grade<100)
+            if(grade >= 0 && grade <= 100)
             {
                 this.grades.Add(grade);
             }
             else
             {
-                Console.WriteLine("Podaj ocenę z zakresu 0 - 100");
+                Console.WriteLine("Invalid value");
 
             }
         }
+
+        public void AddGrade(string grade)
+        {
+            if(float.TryParse(grade, out float result))
+            {
+                this.AddGrade(result);
+            }
+            else
+            {
+                Console.WriteLine("String must be numerical");
+            }
+        }
+
+        public void AddGrade(double grade)
+        {
+            float result = (float) grade;
+                this.AddGrade(result);    
+        }
+
+        public void AddGrade(char grade)
+        {
+           
+            string gradeInString = grade.ToString();
+            if (float.TryParse(gradeInString, out float result))
+            {
+                this.AddGrade(result);
+            }
+            else
+            {
+                Console.WriteLine("String must be numerical");
+            }
+
+
+        }
+
+
+
 
         public Statistics GetStatistics()
         {
