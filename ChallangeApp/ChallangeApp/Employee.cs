@@ -10,10 +10,8 @@ namespace ChallangeApp
             this.Name = name;
             this.Surname = surname;
         }
-
         public string Name { get; private set; }
         public string Surname { get; private set; }
-
         public void AddGrade(float grade)
         {
             if (grade >= 0 && grade <= 100)
@@ -22,8 +20,7 @@ namespace ChallangeApp
             }
             else
             {
-                Console.WriteLine("Invalid value");
-
+                throw new Exception("Invalid value");
             }
         }
 
@@ -58,8 +55,7 @@ namespace ChallangeApp
                         this.grades.Add(20);
                         break;
                     default:
-                        Console.WriteLine("Podaj liczbę z zakresu 0-100");
-                        break;
+                        throw new Exception("Wrong Letter");
                 }
             }
         }
@@ -97,15 +93,6 @@ namespace ChallangeApp
             }
             return statistics;
         }
-
-
-
-
-
-
-
-
-
     }
 }
 
