@@ -2,16 +2,17 @@
 
 namespace ChallangeApp
 {
-    public class Employee
+    public class Employee : Person
     {
         private List<float> grades = new List<float>();
-        public Employee(string name, string surname)
+        public Employee(string name, string surname,string position, string sex)
+            :base (name, surname, sex)
         {
-            this.Name = name;
-            this.Surname = surname;
+            this.Position = position;
         }
-        public string Name { get; private set; }
-        public string Surname { get; private set; }
+
+        public string Position { get; private set; }
+       
         public void AddGrade(float grade)
         {
             if (grade >= 0 && grade <= 100)
@@ -77,7 +78,7 @@ namespace ChallangeApp
             {
                 case var average when average >= 80:
                     statistics.AverageLetter = "A";
-                        break;
+                    break;
                 case var average when average >= 60:
                     statistics.AverageLetter = "B";
                     break;

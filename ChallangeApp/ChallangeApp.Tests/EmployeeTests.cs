@@ -12,7 +12,7 @@ namespace ChallangeApp.Tests
         public void AddGradeShouldReturnAGrade()
         {
 
-            var employee = new Employee("Rafal", "Kordowski");
+            var employee = new Employee("Rafal", "Kordowski","Cleaner","Mê¿czyna");
 
             employee.AddGrade("A");
             employee.AddGrade("a");
@@ -28,7 +28,7 @@ namespace ChallangeApp.Tests
         public void AddGradeShouldReturnBGrade()
         {
 
-            var employee = new Employee("Rafal", "Kordowski");
+            var employee = new Employee("Rafal", "Kordowski","Boss", "Mê¿czyna");
 
             employee.AddGrade('b');
             employee.AddGrade("B");

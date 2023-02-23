@@ -6,18 +6,46 @@ Console.WriteLine();
 
 string name;
 string surname;
-int index;
 string input;
+string sex;
+string position;
 
 
 
 
-Console.WriteLine("Podaj imię dla pracownika: " );
+Console.WriteLine("Podaj imię dla pracownika: ");
 name = Console.ReadLine();
 Console.WriteLine("Podaj nazwisko dla pracownika: ");
 surname = Console.ReadLine();
+Console.WriteLine("Podaj płeć pracownika(M - mężczyzna, K - kobieta): ");
+sex = Console.ReadLine();
+switch (sex)
+{
+    case "k":
+    case "K":
+        sex = "Kobieta";
+        break;
+    case "M":
+    case "m":
+        sex = "Mężczyzna";
+        break;
+    default:
+        try
+        {
+            throw new Exception("Wrong sex");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
 
-    var employee = new Employee(name, surname);
+        }
+        break;
+}
+Console.WriteLine("Stanowisko tego pracownibka:");
+
+position = Console.ReadLine();
+
+var employee = new Employee(name, surname, position,sex);
 
 Console.WriteLine("Aby wyjść z wpisywania ocen wpisz 'q'");
 
@@ -30,10 +58,10 @@ while (true)
         break;
     }
     try
-    { 
+    {
         employee.AddGrade(input);
     }
-    catch(Exception e)
+    catch (Exception e)
     {
         Console.WriteLine(e.Message);
     }
