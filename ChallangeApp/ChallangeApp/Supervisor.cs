@@ -19,19 +19,18 @@ namespace ChallangeApp
 
         public void AddGrade(string grade)
         {
+            var intOfGrade = grade.Replace("-", "").Replace("+", "");
 
-            var caloscZOceny = grade.Replace("-", "").Replace("+", "");
-
-            var test = int.TryParse(caloscZOceny, out var oc);
+            var test = int.TryParse(intOfGrade, out var oc);
             if (!test || 1 > oc || oc > 6)
                 throw new ArgumentException();
 
-            int punkty;
+            int points;
 
             if (oc == 1)
-                punkty = 10;
+                points = 10;
             else
-                punkty = 100 - (6 - oc) * 20;
+                points = 100 - (6 - oc) * 20;
 
             if (grade == "-1" || grade == "1-")
                 throw new ArgumentException();
@@ -39,14 +38,12 @@ namespace ChallangeApp
             else if (grade == "+6" || grade == "6+")
                  throw new ArgumentException();
 
-
-
             if (grade.Contains("-"))
-                punkty -= 5;
+                points -= 5;
             else if (grade.Contains("+"))
-                punkty += 5;
+                points += 5;
 
-            this.grades.Add(punkty);
+            this.grades.Add(points);
         }
 
         public void AddGrade(float grade)
