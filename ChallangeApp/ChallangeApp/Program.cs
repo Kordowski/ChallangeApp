@@ -7,8 +7,7 @@ Console.WriteLine();
 string name;
 string surname;
 string input;
-string sex;
-string position;
+
 
 
 
@@ -17,35 +16,33 @@ Console.WriteLine("Podaj imię dla pracownika: ");
 name = Console.ReadLine();
 Console.WriteLine("Podaj nazwisko dla pracownika: ");
 surname = Console.ReadLine();
-Console.WriteLine("Podaj płeć pracownika(M - mężczyzna, K - kobieta): ");
-sex = Console.ReadLine();
-switch (sex)
-{
-    case "k":
-    case "K":
-        sex = "Kobieta";
-        break;
-    case "M":
-    case "m":
-        sex = "Mężczyzna";
-        break;
-    default:
-        try
-        {
-            throw new Exception("Wrong sex");
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine(ex.Message);
+//Console.WriteLine("Podaj płeć pracownika(M - mężczyzna, K - kobieta): ");
+//sex = Console.ReadLine();
+//switch (sex)
+//{
+//    case "k":
+//    case "K":
+//        sex = "Kobieta";
+//        break;
+//    case "M":
+//    case "m":
+//        sex = "Mężczyzna";
+//        break;
+//    default:
+//        try
+//        {
+//            throw new Exception("Wrong sex");
+//        }
+//        catch (Exception ex)
+//        {
+//            Console.WriteLine(ex.Message);
+//        }
+//        break;
+//}
+//Console.WriteLine("Stanowisko tego pracownika:");
+//position = Console.ReadLine();
 
-        }
-        break;
-}
-Console.WriteLine("Stanowisko tego pracownibka:");
-
-position = Console.ReadLine();
-
-var employee = new Employee(name, surname, position,sex);
+var employee = new Supervisor(name, surname);
 
 Console.WriteLine("Aby wyjść z wpisywania ocen wpisz 'q'");
 
@@ -66,8 +63,6 @@ while (true)
         Console.WriteLine(e.Message);
     }
 };
-
-
 
 var statistics = employee.GetStatistics();
 

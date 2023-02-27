@@ -1,67 +1,62 @@
-﻿using System.Diagnostics;
-
+﻿
 namespace ChallangeApp
 {
-    public class Employee : IEmployee
+    internal class Supervisor : IEmployee
     {
-        private List<float> grades = new List<float>();
 
-        public Employee(string name, string surname)
+        public Supervisor(string name, string surname)
         {
-           this.Surname = surname;
+            this.Surname = surname;
             this.Name = name;
         }
 
         public string Surname { get; private set; }
         public string Name { get; private set; }
 
-        public void AddGrade(float grade)
-        {
-            if (grade >= 0 && grade <= 100)
-            {
-                this.grades.Add(grade);
-            }
-            else
-            {
-                throw new Exception("Invalid value");
-            }
-        }
+
+        private List<float> grades = new List<float>();
+
 
         public void AddGrade(string grade)
         {
-            if (float.TryParse(grade, out float result))
-            {
-                this.AddGrade(result);
-            }
+
+            var caloscZOceny = grade.Replace("-", "").Replace("+", "");
+
+            var test = int.TryParse(caloscZOceny, out var oc);
+            if (!test || 1 > oc || oc > 6)
+                throw new ArgumentException();
+
+            int punkty;
+
+            if (oc == 1)
+                punkty = 10;
             else
-            {
-                switch (grade)
-                {
-                    case "A":
-                    case "a":
-                        this.grades.Add(100);
-                        break;
-                    case "B":
-                    case "b":
-                        this.grades.Add(80);
-                        break;
-                    case "C":
-                    case "c":
-                        this.grades.Add(60);
-                        break;
-                    case "D":
-                    case "d":
-                        this.grades.Add(40);
-                        break;
-                    case "E":
-                    case "e":
-                        this.grades.Add(20);
-                        break;
-                    default:
-                        throw new Exception("Wrong Letter");
-                }
-            }
+                punkty = 100 - (6 - oc) * 20;
+
+            if (grade == "-1" || grade == "1-")
+                throw new ArgumentException();
+
+            else if (grade == "+6" || grade == "6+")
+                 throw new ArgumentException();
+
+
+
+            if (grade.Contains("-"))
+                punkty -= 5;
+            else if (grade.Contains("+"))
+                punkty += 5;
+
+            this.grades.Add(punkty);
         }
+
+        public void AddGrade(float grade)
+        {
+            throw new NotImplementedException();
+        }
+
+
+
+
         public Statistics GetStatistics()
         {
             var statistics = new Statistics();
@@ -96,6 +91,6 @@ namespace ChallangeApp
             }
             return statistics;
         }
+
     }
 }
-
