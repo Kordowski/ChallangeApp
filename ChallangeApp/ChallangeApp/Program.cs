@@ -42,13 +42,13 @@ surname = Console.ReadLine();
 //Console.WriteLine("Stanowisko tego pracownika:");
 //position = Console.ReadLine();
 
-var employee = new Supervisor(name, surname);
+var employee = new EmployeeInFile(name, surname);
 
-Console.WriteLine("Aby wyjść z wpisywania ocen wpisz 'q'");
+Console.WriteLine("aby wyjść z wpisywania ocen wpisz 'q'");
 
 while (true)
 {
-    Console.Write("Podaj ocenę dla pracownika: ");
+    Console.Write("podaj ocenę dla pracownika: ");
     input = Console.ReadLine();
     if (input == "q")
     {
@@ -64,12 +64,15 @@ while (true)
     }
 };
 
+
 var statistics = employee.GetStatistics();
 
 Console.WriteLine($"Max: {statistics.Max}");
 Console.WriteLine($"Min: {statistics.Min}");
 Console.WriteLine($"Average {statistics.Average:N2}");
 Console.WriteLine($"Average Letter {statistics.AverageLetter}");
+
+
 
 
 
