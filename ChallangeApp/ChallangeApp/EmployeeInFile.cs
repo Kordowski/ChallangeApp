@@ -1,14 +1,20 @@
 ﻿
 using System.Diagnostics;
+using System.Net.Sockets;
 
 namespace ChallangeApp
 {
     public class EmployeeInFile : EmployeeBase
     {
+        public override event GradeAddedDelegate GradeAdded;
+
         private const string fileName = "grades.txt";
         public EmployeeInFile(string name, string surname) : base(name, surname)
         {
+
         }
+
+
 
         public override void AddGrade(string grade)
         {
@@ -19,33 +25,30 @@ namespace ChallangeApp
             }
             else
             {
-                using (var writer = File.AppendText(fileName))
+                switch (grade)
                 {
-                    switch (grade)
-                    {
-                        case "A":
-                        case "a":
-                            writer.WriteLine(100);
-                            break;
-                        case "B":
-                        case "b":
-                            writer.WriteLine(80);
-                            break;
-                        case "C":
-                        case "c":
-                            writer.WriteLine(60);
-                            break;
-                        case "D":
-                        case "d":
-                            writer.WriteLine(40);
-                            break;
-                        case "E":
-                        case "e":
-                            writer.WriteLine(20);
-                            break;
-                        default:
-                            throw new Exception("Wrong Letter");
-                    }
+                    case "A":
+                    case "a":
+                        AddGrade(100);
+                        break;
+                    case "B":
+                    case "b":
+                        AddGrade(80);
+                        break;
+                    case "C":
+                    case "c":
+                        AddGrade(60);
+                        break;
+                    case "D":
+                    case "d":
+                        AddGrade(40);
+                        break;
+                    case "E":
+                    case "e":
+                        AddGrade(20);
+                        break;
+                    default:
+                        throw new Exception("Wrong Letter");
                 }
             }
 
@@ -53,28 +56,29 @@ namespace ChallangeApp
 
         public override void AddGrade(float grade)
         {
-            using (var writer = File.AppendText(fileName))
+
+            if (grade >= 0 && grade <= 100)
             {
-                if (grade >= 0 && grade <= 100)
+                using (var writer = File.AppendText(fileName))
                 {
                     writer.WriteLine(grade);
                 }
-                else
+                if (GradeAdded != null)
                 {
-                    throw new Exception("Invalid value");
+                    GradeAdded(this, new EventArgs());
                 }
+            }
+            else
+            {
+                throw new Exception("Invalid value");
             }
         }
 
         public override Statistics GetStatistics()
         {
-            var result = new Statistics
-            {
-                Average = 0,
-                Max = float.MinValue,
-                Min = float.MaxValue
-            };
-            var counter = 0;
+
+            var statistics = new Statistics();
+
             if (File.Exists(fileName))
             {
                 using (var reader = File.OpenText(fileName))
@@ -82,36 +86,16 @@ namespace ChallangeApp
                     var line = reader.ReadLine();
                     while (line != null)
                     {
-                        var number = float.Parse(line);
-                        result.Max = Math.Max(result.Max, number);
-                        result.Min = Math.Min(result.Min, number);
-                        result.Average += number;
-                        counter++;
+                        float.TryParse(line, out var value);
+                        statistics.AddGrade(value);
                         line = reader.ReadLine();
                     }
                 }
-                result.Average /= counter;
-                switch (result.Average)
-                {
-                    case var average when average >= 80:
-                        result.AverageLetter = "A";
-                        break;
-                    case var average when average >= 60:
-                        result.AverageLetter = "B";
-                        break;
-                    case var average when average >= 40:
-                        result.AverageLetter = "C";
-                        break;
-                    case var average when average >= 20:
-                        result.AverageLetter = "D";
-                        break;
-                    default:
-                        result.AverageLetter = "E";
-                        break;
-                }
-
             }
-            return result;
+            return statistics;
         }
     }
 }
+
+
+      
